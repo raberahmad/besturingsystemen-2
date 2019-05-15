@@ -61,17 +61,40 @@ static void block_free(struct block *bptr)
 
 static void *block_get(size_t n)
 {
-	/* TODO */
+	for(struct block *i = head; i->next!=NULL; i=i->next){
+		if(i->used==0){
+			if (n <= i->size){
+				i->used=1;
+				return i->addr;
+			}
+		}
+	}
+
+	return NULL;
 }
 
 void *malloc(size_t n)
-{
-	/* TODO */
+{	
+
+	if (n==0){
+		return NULL;
+	}
+	void *tptr = block_get(n);
+
+	if(tptr!=NULL){
+		return tptr;
+	}
+	
+	return block_alloc(n);		
+	
+	
 }
 
 void free(void *ptr)
 {
-	/* TODO */
+	if(ptr !=NULL){
+		block_free(ptr-sizeof(struct block));
+	}
 }
 
 void *realloc(void *ptr, size_t n)
