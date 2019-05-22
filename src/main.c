@@ -22,7 +22,17 @@
  *
  */
 
+#include <sys/vga.h>
+#include <sys/print.h>
+#include <sys/ps2.h>
+
 void main(void)
 {
-	/* TODO */
+    while (1)
+    {
+        char input[];
+        scanf("%c", &input);
+        ps2_getch(in)
+    }
+    return 0;
 }

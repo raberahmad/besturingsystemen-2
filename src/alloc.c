@@ -75,7 +75,6 @@ static void *block_get(size_t n)
 
 void *malloc(size_t n)
 {	
-
 	if (n==0){
 		return NULL;
 	}
@@ -86,8 +85,6 @@ void *malloc(size_t n)
 	}
 	
 	return block_alloc(n);		
-	
-	
 }
 
 void free(void *ptr)
