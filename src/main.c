@@ -28,11 +28,10 @@
 
 void main(void)
 {
-    while (1)
+    while (true)
     {
-        char input[];
-        scanf("%c", &input);
-        ps2_getch(in)
+        char c = ps2_getch();
+        printf("%c", c);
     }
     return 0;
 }
