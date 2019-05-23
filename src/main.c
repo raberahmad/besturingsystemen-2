@@ -26,12 +26,58 @@
 #include <sys/print.h>
 #include <sys/ps2.h>
 
+
+
+void input(){
+    char c = ps2_getch();
+    
+    if(c == '\e'){
+        if (ps2_getch()=='['){
+            c = ps2_getch();
+            switch (c)
+            {
+            case 'A':
+                // UP
+                printf("%s", "jahooooor");
+                break;
+            case 'B':
+                // Down
+                printf("%s", "JAAA");
+                break;
+            case 'C':
+                // Right
+                printf("%s", "JAAA");
+                break;
+            case 'D':
+                // Left
+                printf("%s", "JAAA");
+                break;
+                     
+            default:
+                break;
+            }
+        }
+    
+    }
+    else if(c == '\b'){
+
+        struct vga_cursor vg = vga_curget();
+        vg.x = vg.x-1;
+        vga_curset(vg, false);
+        //printf("%i%i", vg);
+
+    }
+    else{
+        printf("%c", c);
+    }
+
+}    
+
 void main(void)
 {
     while (true)
-    {
-        char c = ps2_getch();
-        printf("%c", c);
+    {   
+        input();
     }
     return 0;
 }
